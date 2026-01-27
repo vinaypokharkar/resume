@@ -32,7 +32,7 @@ jobs:
       - name: Build PDF
         run: |
           latexmk -pdf resume.tex
-          mv resume.pdf docs/resume.pdf
+          mv resume.pdf docs/Vinay Pokharkar resume.pdf
 
       - name: Commit PDF
         run: |
