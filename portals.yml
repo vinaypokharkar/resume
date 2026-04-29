@@ -1,0 +1,467 @@
+# Portal Scanner Configuration — Vinay Pokharkar
+# Used by /career-ops scan to discover new offers automatically.
+#
+# Calibrated for:
+#   - Final-year B.E. AI/ML student graduating 2026
+#   - Based in India (Maharashtra), open to remote-global
+#   - Targeting entry-level + internship AI/ML, full-stack, and backend roles
+#
+# Strategy (3 levels):
+#   1. Playwright → careers_url of each company (real-time, reliable)
+#   2. Greenhouse API → structured JSON (fast, Greenhouse-only)
+#   3. WebSearch with site: filters (broad discovery, may be stale)
+#
+# IMPORTANT: Each company in tracked_companies MUST have careers_url.
+#   Prefer the BRANDED company careers URL whenever available; use ATS-hosted URL only as fallback.
+
+# -- Title filter --
+# At least 1 positive must match AND 0 negatives must match (case-insensitive).
+
+title_filter:
+  positive:
+    # -- Core AI/ML --
+    - "AI"
+    - "ML"
+    - "LLM"
+    - "Agent"
+    - "Agentic"
+    - "GenAI"
+    - "Generative AI"
+    - "NLP"
+    - "MLOps"
+    - "LLMOps"
+    - "RAG"
+    - "Applied AI"
+    - "Machine Learning"
+    - "Deep Learning"
+    # -- Entry-level signals (THESE ARE WANTED, not negatives) --
+    - "Intern"
+    - "Internship"
+    - "Graduate"
+    - "New Grad"
+    - "Associate"
+    - "Trainee"
+    - "Apprentice"
+    - "Junior"
+    - "Entry Level"
+    - "Engineer I"
+    - "SDE-1"
+    - "SDE 1"
+    - "SDE-I"
+    # -- Stack signals (Vinay's actual toolkit) --
+    - "Full Stack"
+    - "Full-Stack"
+    - "Backend"
+    - "Python"
+    - "FastAPI"
+    - "Next.js"
+    - "React Native"
+    - "TypeScript"
+    - "Node.js"
+  negative:
+    # -- Stack mismatches (Vinay does not work in these) --
+    - ".NET"
+    - "Java "
+    - "iOS"
+    - "Android"
+    - "PHP"
+    - "Ruby"
+    - "Embedded"
+    - "Firmware"
+    - "FPGA"
+    - "ASIC"
+    - "Blockchain"
+    - "Web3"
+    - "Crypto"
+    - "Salesforce Admin"
+    - "SAP "
+    - "Oracle EBS"
+    - "Mainframe"
+    - "COBOL"
+    # -- Seniority mismatches (Vinay is final-year, not senior) --
+    - "Senior"
+    - "Staff"
+    - "Principal"
+    - "Lead "
+    - "Head of"
+    - "Director"
+    - "VP"
+    - "Manager"
+    - "10+ years"
+    - "8+ years"
+    - "7+ years"
+    - "5+ years"
+    # -- Non-engineering --
+    - "Sales Executive"
+    - "Account Executive"
+    - "BDR"
+    - "SDR"
+    - "Recruiter"
+    - "HR "
+  seniority_boost:
+    # Entry-level prefixes that boost relevance (NOT a hard requirement)
+    - "Junior"
+    - "Associate"
+    - "Graduate"
+    - "Trainee"
+    - "New Grad"
+    - "Entry Level"
+    - "Engineer I"
+    - "SDE-1"
+    - "Intern"
+
+# -- Search queries --
+# Each query triggers a WebSearch. Use site: to filter by portal.
+
+search_queries:
+
+  # -- India-specific job boards --
+
+  - name: Naukri — AI/ML entry-level India
+    query: 'site:naukri.com "AI Engineer" OR "ML Engineer" OR "Machine Learning" "fresher" OR "entry level" OR "0-1 years" OR "junior"'
+    enabled: true
+
+  - name: Naukri — Full-Stack/Backend entry-level
+    query: 'site:naukri.com "Full Stack" OR "Backend" OR "Python" "fresher" OR "0-2 years" OR "junior" India'
+    enabled: true
+
+  - name: Instahyre — AI/ML
+    query: 'site:instahyre.com "AI Engineer" OR "ML Engineer" OR "Applied AI" OR "Full Stack"'
+    enabled: true
+
+  - name: Cutshort — AI/ML new grad
+    query: 'site:cutshort.io "AI" OR "ML" OR "LLM" OR "Full Stack" "fresher" OR "junior" OR "entry level"'
+    enabled: true
+
+  - name: Internshala — AI/ML internships
+    query: 'site:internshala.com "Machine Learning" OR "AI" OR "Data Science" OR "Full Stack" internship'
+    enabled: true
+
+  - name: Wellfound (AngelList) — AI startups India
+    query: 'site:wellfound.com "AI Engineer" OR "ML Engineer" OR "Full Stack" India OR remote'
+    enabled: true
+
+  - name: LinkedIn India — AI entry-level
+    query: 'site:linkedin.com/jobs "AI Engineer" OR "ML Engineer" "entry level" OR "associate" India'
+    enabled: true
+
+  - name: HackerRank Jobs — Entry-level engineering
+    query: 'site:hackerrank.com/jobs "AI" OR "ML" OR "Backend" OR "Full Stack" entry OR junior OR fresher'
+    enabled: true
+
+  # -- Remote-global startup boards --
+
+  - name: YC workatastartup — AI Engineer (entry/intern)
+    query: 'site:workatastartup.com "AI Engineer" OR "ML Engineer" OR "Applied AI" intern OR "new grad" OR junior remote'
+    enabled: true
+
+  - name: YC workatastartup — Full-Stack remote
+    query: 'site:workatastartup.com "Full Stack" OR "Founding Engineer" OR "SDE-1" remote India OR global'
+    enabled: true
+
+  - name: Ashby — AI Engineer entry-level
+    query: 'site:jobs.ashbyhq.com "AI Engineer" OR "LLM Engineer" OR "Applied AI" "junior" OR "associate" OR "intern" OR "new grad"'
+    enabled: true
+
+  - name: Ashby — Agentic / RAG
+    query: 'site:jobs.ashbyhq.com "Agentic" OR "AI Agent" OR "RAG" remote'
+    enabled: true
+
+  - name: Greenhouse — AI Engineer entry-level
+    query: 'site:boards.greenhouse.io OR site:job-boards.greenhouse.io "AI Engineer" OR "Machine Learning Engineer" "associate" OR "new grad" OR "entry" OR "I"'
+    enabled: true
+
+  - name: Greenhouse — Full-Stack new grad
+    query: 'site:job-boards.greenhouse.io "Full Stack" OR "Software Engineer" "new grad" OR "associate" OR "I" remote'
+    enabled: true
+
+  - name: Workable — AI/ML entry-level
+    query: 'site:apply.workable.com "AI" OR "Machine Learning" OR "Full Stack" junior OR associate OR intern remote'
+    enabled: true
+
+  # -- Remote-friendly aggregators --
+
+  - name: RemoteOK — AI/Full-Stack remote
+    query: 'site:remoteok.com "AI Engineer" OR "ML Engineer" OR "Full Stack" OR "Backend" junior OR entry OR worldwide'
+    enabled: true
+
+  - name: WeWorkRemotely — AI/Backend
+    query: 'site:weworkremotely.com "AI" OR "Machine Learning" OR "Full Stack" OR "Backend"'
+    enabled: true
+
+  - name: Himalayas — Remote AI/ML
+    query: 'site:himalayas.app "AI Engineer" OR "ML Engineer" OR "Full Stack" worldwide OR India'
+    enabled: true
+
+  - name: Working Nomads — AI/Backend remote
+    query: 'site:workingnomads.com "AI Engineer" OR "ML Engineer" OR "Backend" OR "Full Stack"'
+    enabled: true
+
+  # -- AI-specific aggregators --
+
+  - name: ai-jobs.net — Applied AI/ML entry
+    query: 'site:ai-jobs.net "Applied AI" OR "Machine Learning Engineer" OR "AI Engineer" junior OR associate OR remote'
+    enabled: true
+
+  - name: HN Who's Hiring — Remote AI
+    query: 'site:news.ycombinator.com OR site:hnrss.org "AI Engineer" OR "ML Engineer" OR "Founding Engineer" remote India OR worldwide'
+    enabled: true
+
+# -- Tracked companies --
+# Companies whose career pages are checked directly.
+# scan_method: playwright (default), websearch, greenhouse_api
+
+tracked_companies:
+
+  # -- Indian AI-native companies --
+
+  - name: Sarvam.ai
+    careers_url: https://www.sarvam.ai/careers
+    scan_method: websearch
+    scan_query: 'site:sarvam.ai/careers OR "Sarvam AI" "Engineer" OR "Intern" OR "Research"'
+    notes: "Bengaluru. Indic-first foundation models. Vinay used Sarvam APIs in SeaGuard — strong fit signal."
+    enabled: true
+
+  - name: Krutrim (Ola)
+    careers_url: https://www.olakrutrim.com/careers
+    scan_method: websearch
+    scan_query: '"Krutrim" "Engineer" OR "Intern" careers Ola'
+    notes: "Bengaluru. Ola's AI subsidiary, India-built foundation models."
+    enabled: true
+
+  - name: Yellow.ai
+    careers_url: https://yellow.ai/careers/
+    scan_method: websearch
+    scan_query: 'site:yellow.ai/careers "AI Engineer" OR "ML" OR "Full Stack" OR "Intern"'
+    notes: "Bengaluru. Conversational AI for enterprise."
+    enabled: true
+
+  - name: Observe.AI
+    careers_url: https://www.observe.ai/careers
+    scan_method: websearch
+    scan_query: 'site:observe.ai/careers "Engineer" OR "Intern" OR "Associate"'
+    notes: "Bengaluru / SF. Voice AI for contact centers."
+    enabled: true
+
+  - name: Haptik
+    careers_url: https://www.haptik.ai/careers
+    scan_method: websearch
+    scan_query: 'site:haptik.ai/careers "Engineer" OR "Intern" OR "AI"'
+    notes: "Mumbai. Conversational AI / chatbots, Reliance Jio Platforms-owned."
+    enabled: true
+
+  - name: Gnani.ai
+    careers_url: https://gnani.ai/careers/
+    scan_method: websearch
+    scan_query: 'site:gnani.ai/careers "Engineer" OR "Intern" OR "Speech"'
+    notes: "Bengaluru. Speech and conversational AI."
+    enabled: true
+
+  - name: Glance AI
+    careers_url: https://www.glance.com/careers
+    scan_method: websearch
+    scan_query: 'site:glance.com/careers "AI" OR "Engineer" OR "Intern"'
+    notes: "Bengaluru. AI-driven content/lockscreen, InMobi group."
+    enabled: true
+
+  # -- Indian dev tools / SaaS --
+
+  - name: Atlan
+    careers_url: https://atlan.com/careers/
+    scan_method: websearch
+    scan_query: 'site:atlan.com/careers "Engineer" OR "Intern" OR "Full Stack"'
+    notes: "Remote-first / India HQ. Data catalog, AI-augmented metadata platform."
+    enabled: true
+
+  - name: Hasura
+    careers_url: https://hasura.io/careers/
+    scan_method: websearch
+    scan_query: 'site:hasura.io/careers "Engineer" OR "Intern"'
+    notes: "Bengaluru / SF. GraphQL platform, hires remote-India."
+    enabled: true
+
+  - name: Postman
+    careers_url: https://www.postman.com/company/careers/
+    scan_method: websearch
+    scan_query: 'site:postman.com/company/careers "Engineer" OR "Intern" OR "Associate" India'
+    notes: "Bengaluru / SF. API platform, large engineering org in India."
+    enabled: true
+
+  - name: BrowserStack
+    careers_url: https://www.browserstack.com/careers
+    scan_method: websearch
+    scan_query: 'site:browserstack.com/careers "Engineer" OR "Intern" OR "SDE"'
+    notes: "Mumbai. Browser/device testing platform."
+    enabled: true
+
+  - name: Chargebee
+    careers_url: https://www.chargebee.com/careers/
+    scan_method: websearch
+    scan_query: 'site:chargebee.com/careers "Engineer" OR "Intern" OR "Full Stack"'
+    notes: "Chennai / Bengaluru. Subscription billing SaaS."
+    enabled: true
+
+  - name: Freshworks
+    careers_url: https://www.freshworks.com/company/careers/
+    scan_method: websearch
+    scan_query: 'site:freshworks.com/company/careers "AI" OR "Engineer" OR "Intern"'
+    notes: "Chennai / Bengaluru. SaaS product suite, Freddy AI."
+    enabled: true
+
+  - name: Zoho
+    careers_url: https://careers.zohocorp.com/
+    scan_method: websearch
+    scan_query: 'site:careers.zohocorp.com OR "Zoho" careers "Engineer" OR "Trainee" OR "Intern"'
+    notes: "Chennai. SaaS suite, hires fresh graduates aggressively."
+    enabled: true
+
+  # -- Indian fintech / consumer --
+
+  - name: Razorpay
+    careers_url: https://razorpay.com/jobs/
+    scan_method: websearch
+    scan_query: 'site:razorpay.com/jobs "Engineer" OR "Intern" OR "SDE" OR "AI"'
+    notes: "Bengaluru. Fintech unicorn, payments + business banking."
+    enabled: true
+
+  - name: CRED
+    careers_url: https://careers.cred.club/
+    scan_method: websearch
+    scan_query: 'site:careers.cred.club OR "CRED" careers "Engineer" OR "AI" OR "Intern"'
+    notes: "Bengaluru. Premium consumer fintech."
+    enabled: true
+
+  - name: Zerodha
+    careers_url: https://zerodha.com/careers/
+    scan_method: websearch
+    scan_query: 'site:zerodha.com/careers "Engineer" OR "Developer" OR "Intern"'
+    notes: "Bengaluru. India's largest stockbroker, Python-heavy stack."
+    enabled: true
+
+  - name: Groww
+    careers_url: https://groww.in/careers
+    scan_method: websearch
+    scan_query: 'site:groww.in/careers "Engineer" OR "SDE" OR "Intern"'
+    notes: "Bengaluru. Investment app for retail."
+    enabled: true
+
+  # -- Indian commerce / marketplaces --
+
+  - name: Swiggy
+    careers_url: https://careers.swiggy.com/
+    scan_method: websearch
+    scan_query: 'site:careers.swiggy.com "Engineer" OR "AI" OR "ML" OR "Intern"'
+    notes: "Bengaluru. Food delivery + Instamart, large ML/personalization org."
+    enabled: true
+
+  - name: Flipkart
+    careers_url: https://www.flipkartcareers.com/
+    scan_method: websearch
+    scan_query: 'site:flipkartcareers.com OR "Flipkart" careers "SDE" OR "Engineer" OR "Intern"'
+    notes: "Bengaluru. India's largest e-commerce, Walmart-owned."
+    enabled: true
+
+  - name: Meesho
+    careers_url: https://www.meesho.io/jobs
+    scan_method: websearch
+    scan_query: 'site:meesho.io/jobs "Engineer" OR "SDE" OR "Intern"'
+    notes: "Bengaluru. Social commerce, large ML platform."
+    enabled: true
+
+  - name: PhonePe
+    careers_url: https://www.phonepe.com/careers/
+    scan_method: websearch
+    scan_query: 'site:phonepe.com/careers "Engineer" OR "SDE" OR "Intern"'
+    notes: "Bengaluru. Payments super-app."
+    enabled: true
+
+  # -- Global AI labs (hire remote globally or open to India) --
+
+  - name: Anthropic
+    careers_url: https://job-boards.greenhouse.io/anthropic
+    api: https://boards-api.greenhouse.io/v1/boards/anthropic/jobs
+    notes: "AI safety lab. Most roles US/UK; long-shot but worth tracking."
+    enabled: true
+
+  - name: OpenAI
+    careers_url: https://openai.com/careers
+    scan_method: websearch
+    scan_query: 'site:openai.com/careers "Engineer" OR "Research" OR "Intern"'
+    notes: "Mostly US-based; tracks for any India/remote postings."
+    enabled: true
+
+  - name: Hugging Face
+    careers_url: https://apply.workable.com/huggingface/
+    scan_method: websearch
+    scan_query: 'site:apply.workable.com/huggingface "Engineer" OR "Intern"'
+    notes: "Paris / NYC / Remote-global. ML hub, hires across regions."
+    enabled: true
+
+  - name: Cohere
+    careers_url: https://jobs.ashbyhq.com/cohere
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/cohere "Engineer" OR "Intern" OR "Associate"'
+    notes: "Toronto + remote. Enterprise LLM provider."
+    enabled: true
+
+  - name: Mistral AI
+    careers_url: https://jobs.lever.co/mistral
+    notes: "Paris. European AI lab, hires remote in some roles."
+    enabled: true
+
+  # -- Global dev tools (remote-friendly) --
+
+  - name: Supabase
+    careers_url: https://jobs.ashbyhq.com/supabase
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/supabase'
+    notes: "Remote-first global. Open-source Firebase alternative — Vinay uses Supabase in CodeMotion + SeaGuard."
+    enabled: true
+
+  - name: Vercel
+    careers_url: https://job-boards.greenhouse.io/vercel
+    api: https://boards-api.greenhouse.io/v1/boards/vercel/jobs
+    notes: "Remote-friendly. Next.js + AI SDK — Vinay's frontend stack."
+    enabled: true
+
+  - name: Resend
+    careers_url: https://jobs.ashbyhq.com/resend
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/resend'
+    notes: "Remote-first. Email API for developers."
+    enabled: true
+
+  - name: Clerk
+    careers_url: https://jobs.ashbyhq.com/clerk
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/clerk'
+    notes: "Remote. Auth & user management for developers."
+    enabled: true
+
+  - name: Inngest
+    careers_url: https://jobs.ashbyhq.com/inngest
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/inngest'
+    notes: "Remote. Durable workflow engine for serverless."
+    enabled: true
+
+  - name: Replicate
+    careers_url: https://jobs.ashbyhq.com/replicate
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/replicate "Engineer" OR "Intern"'
+    notes: "Remote-first. Run open-source ML models in the cloud."
+    enabled: true
+
+  - name: LangChain
+    careers_url: https://jobs.ashbyhq.com/langchain
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/langchain "Engineer" OR "Intern"'
+    notes: "Remote. LangChain / LangSmith framework — Vinay's RAG/agent toolkit."
+    enabled: true
+
+  - name: Pinecone
+    careers_url: https://jobs.ashbyhq.com/pinecone
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/pinecone "Engineer" OR "Intern"'
+    notes: "NYC + remote. Vector database — listed in Vinay's profile.yml stack."
+    enabled: true

@@ -1,0 +1,73 @@
+# Career-Ops Profile Configuration
+# Single source of truth for personal data across all modes.
+
+candidate:
+  full_name: "Vinay Pokharkar"
+  email: "pokharkarvinay2005@gmail.com"
+  phone: "+91-7208370792"
+  location: "Maharashtra, India - 400709"
+  linkedin: "linkedin.com/in/vinaypokharkar"
+  portfolio_url: "https://vinaypokharkar.dev"
+  github: "github.com/vinaypokharkar"
+  # twitter: ""
+  # canva_resume_design_id: "DAxxxxxxxxx"
+
+target_roles:
+  # North Star roles — what you're optimizing for
+  primary:
+    - "AI/ML Engineer"
+    - "Full-Stack AI Engineer"
+  archetypes:
+    - name: "AI/ML Engineer"
+      level: "Entry/Junior"
+      fit: "primary"
+    - name: "Full-Stack Engineer (AI-focused)"
+      level: "Entry/Junior"
+      fit: "primary"
+    - name: "Backend Engineer"
+      level: "Entry/Junior"
+      fit: "secondary"
+    - name: "ML Research Engineer"
+      level: "Entry"
+      fit: "adjacent"
+
+narrative:
+  headline: "Final-year AI/ML student shipping production LLM and full-stack systems"
+  exit_story: "Final-year B.E. in AI/ML at SIES GST. Already shipped a paid freelance recruitment platform, a remote internship at Pioneer Machines, and a hackathon-winning React Native AI app for coastal fishermen. Now optimizing for full-time AI/ML engineering roles where I can build production LLM applications end-to-end."
+  superpowers:
+    - "End-to-end full-stack delivery (Next.js + FastAPI + Postgres/Supabase)"
+    - "Production LLM apps: RAG, prompt engineering, agentic workflows, sandboxed code execution"
+    - "React Native mobile builds with multilingual voice (Sarvam.ai) and on-device ML"
+    - "Ship-to-launch focus — won *Most Product Readiness* at Hackcelestial 2.0 (400+ participants)"
+  proof_points:
+    - name: "SeaGuard — Hackcelestial 2.0 winner"
+      url: "https://github.com/vinaypokharkar/SeaGuard"
+      hero_metric: "Most Product Readiness Award (selected from 400+ participants)"
+    - name: "CodeMotion — Text-to-animation LLM platform"
+      url: "https://github.com/vinaypokharkar/CodeMotion"
+      hero_metric: "Gemini → Manim pipeline with Dockerized sandbox for untrusted model-generated code"
+    - name: "IIMSC — Multilingual recruitment platform (paid freelance)"
+      url: "https://ii-msc.com"
+      hero_metric: "Production Next.js platform live, i18n across 4 languages"
+    - name: "AutoPharmX — Cancer drug-efficacy prediction"
+      url: "https://github.com/vinaypokharkar/autopharmax"
+      hero_metric: "Dockerized FastAPI inference service + Streamlit UI for IC50 prediction"
+    - name: "Reddit Insight Automator"
+      url: "https://github.com/vinaypokharkar/Reddit-Insight-Automator"
+      hero_metric: "n8n + self-hosted Ollama agentic pipeline delivering Slack digests on a schedule"
+  # dashboard:
+  #   url: ""
+  #   password: ""
+
+compensation:
+  target_range: "INR 8L-15L"
+  currency: "INR"
+  minimum: "INR 6L"
+  location_flexibility: "Remote preferred; open to on-site in Mumbai/Pune/Bengaluru"
+
+location:
+  country: "India"
+  city: "Navi Mumbai (Maharashtra)"
+  timezone: "IST"
+  visa_status: "Indian citizen — no sponsorship needed for India-based roles"
+  # onsite_availability: ""
