@@ -9,7 +9,7 @@
 
 ## Professional Summary
 
-AI/ML engineer building production full-stack systems --- LLM applications, RAG pipelines, and agentic workflows on FastAPI, Next.js, and React Native. Delivered for a paying freelance client, a remote internship, and a 5-person hackathon team that won *Most Product Readiness* at Hackcelestial 2.0 (400+ participants). Final-year B.E. in Artificial Intelligence & Machine Learning.
+AI/ML engineer building production full-stack systems --- LLM applications, RAG pipelines, and agentic workflows on FastAPI, Next.js, and React Native. Delivered for a paying freelance client, a remote internship, and hackathon teams that placed Top 12 of ~6,000 at the Sarvam AI Builders Hackathon (2026) and won *Most Product Readiness* at Hackcelestial 2.0 (400+ participants). Final-year B.E. in Artificial Intelligence & Machine Learning.
 
 ## Work Experience
 
@@ -23,6 +23,7 @@ June 2025 -- September 2025
 
 ## Projects
 
+- **Praman** -- Multilingual WhatsApp banking assistant for low-literacy rural users. Takes voice or text and replies in kind in the user's own language, on the Sarvam.ai speech-to-text, translation, and text-to-speech stack (22 Indian languages), with a web dashboard for tracking conversations and loan applications. Document explainer flow: users forward a scanned English bank letter or loan agreement (PDF or image) and get it summarized and read back in their chosen language. **Placed Top 12 at the Sarvam AI Builders Hackathon, Bengaluru (2026)**, among ~100 on-site finalists picked from ~6,000 registrations. [GitHub](TODO)
 - **CodeMotion** -- Full-stack text-to-animation LLM platform converting natural-language prompts into Manim-rendered math videos across 3 user tiers (10s/30s/60s). Gemini for prompt-to-Manim Python script generation; Dockerized sandbox isolates untrusted model-generated code; Next.js chat UI, FastAPI orchestration, Supabase auth and video storage. [GitHub](https://github.com/vinaypokharkar/CodeMotion)
 - **SeaGuard** -- AI mobile assistant for India's coastal fishing population. Co-led a 5-person team to ship a launch-ready React Native app with TensorFlow-based Potential Fishing Zone (PFZ) detection, SOS alerts, GPS navigation, catch logging, trip planning, and live weather. FastAPI + Supabase backend with Sarvam.ai-powered multilingual voice support and LLM-driven assistance. **Awarded *Most Product Readiness* at Hackcelestial 2.0 (400+ participants).** [GitHub](https://github.com/vinaypokharkar/SeaGuard)
 - **AutoPharmX** -- Cancer drug-efficacy prediction (IC50 values). End-to-end ML system covering data preprocessing, feature engineering, model training, and evaluation in Python. Deployed as a Dockerized FastAPI inference service behind an interactive Streamlit UI. [GitHub](https://github.com/vinaypokharkar/autopharmax)
@@ -43,6 +44,7 @@ June 2025 -- September 2025
 
 ## Honours and Awards
 
+- **Top 12**, Sarvam AI Builders Hackathon, Bengaluru (2026), among ~100 on-site finalists picked from ~6,000 registrations, for *Praman*.
 - **Most Product Readiness Award**, Hackcelestial 2.0, PCOE (Sept 2025) -- selected from 400+ participants for *SeaGuard*.
 
 ## Positions of Responsibility

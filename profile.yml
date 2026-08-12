@@ -33,13 +33,16 @@ target_roles:
 
 narrative:
   headline: "Final-year AI/ML student shipping production LLM and full-stack systems"
-  exit_story: "Final-year B.E. in AI/ML at SIES GST. Already shipped a paid freelance recruitment platform, a remote internship at Pioneer Machines, and a hackathon-winning React Native AI app for coastal fishermen. Now optimizing for full-time AI/ML engineering roles where I can build production LLM applications end-to-end."
+  exit_story: "Final-year B.E. in AI/ML at SIES GST. Already shipped a paid freelance recruitment platform, a remote internship at Pioneer Machines, a hackathon-winning React Native AI app for coastal fishermen, and a Top-12 finish (of ~6,000) at the Sarvam AI Builders Hackathon with a multilingual WhatsApp banking assistant. Now optimizing for full-time AI/ML engineering roles where I can build production LLM applications end-to-end."
   superpowers:
     - "End-to-end full-stack delivery (Next.js + FastAPI + Postgres/Supabase)"
     - "Production LLM apps: RAG, prompt engineering, agentic workflows, sandboxed code execution"
     - "React Native mobile builds with multilingual voice (Sarvam.ai) and on-device ML"
-    - "Ship-to-launch focus — won *Most Product Readiness* at Hackcelestial 2.0 (400+ participants)"
+    - "Ship-to-launch focus: Top 12 of ~6,000 at the Sarvam AI Builders Hackathon; won *Most Product Readiness* at Hackcelestial 2.0 (400+ participants)"
   proof_points:
+    - name: "Praman — Sarvam AI Builders Hackathon, Top 12"
+      url: "TODO"
+      hero_metric: "Top 12 of ~6,000 registrations (~100 on-site finalists, Bengaluru 2026); multilingual WhatsApp banking assistant with voice I/O and document explanation for low-literacy users"
     - name: "SeaGuard — Hackcelestial 2.0 winner"
       url: "https://github.com/vinaypokharkar/SeaGuard"
       hero_metric: "Most Product Readiness Award (selected from 400+ participants)"
